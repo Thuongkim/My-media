@@ -15,10 +15,10 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        $link = Link::where('user_id', Auth::user()->id)->where('status', 1)->first();
-        $avatar = Avatar::where('user_id', Auth::user()->id)->first();
-        $text = Text::where('user_id', Auth::user()->id)->first();
-        $git_user = Git_user::where('user_id', Auth::user()->id)->first();
+        $link = Link::where('user_id', Auth::user()->id ?? 1)->where('status', 1)->first();
+        $avatar = Avatar::where('user_id', Auth::user()->id ?? 1)->first();
+        $text = Text::where('user_id', Auth::user()->id ?? 1)->first();
+        $git_user = Git_user::where('user_id', Auth::user()->id ?? 1)->first();
         return view('frontend.home', compact('link', 'avatar', 'text', 'git_user'));
     }
     public function getImage()

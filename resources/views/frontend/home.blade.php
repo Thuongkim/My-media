@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/style_v2.css') }} ">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body style="background: url('{{ $avatar->image }}') no-repeat center center fixed;">
+<body style="background: url('{{ $avatar->image ?? null }}') no-repeat center center fixed;">
 	<div id="application"></div>
 	<div id="drag-container">
 		<div id="spin-container">
@@ -24,12 +24,12 @@
 
 
 			<!-- Text at center of ground -->
-			<p style="font-size: 30px; "><i class="fa fa-heart-o" style="font-size:60px;color:red"></i>{{$text->text}}</p>
+			<p style="font-size: 30px; "><i class="fa fa-heart-o" style="font-size:60px;color:red"></i>{{$text->text ?? null}}</p>
 		</div>
 		<div id="ground"></div>
 	</div>
 	<div style="position: absolute;right: 0;display: flex;top: 0;margin: 0px;height: 100%;">
-		<iframe width="100%" style="margin: auto; max-height: 700px; box-shadow: 6px 6px 8px #999;" height="80%"; scrolling="no" frameborder="no" src="{{$link->link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<iframe width="100%" style="margin: auto; max-height: 700px; box-shadow: 6px 6px 8px #999;" height="80%"; scrolling="no" frameborder="no" src="{{$link->link ?? null}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 		{{-- <iframe width="100%" style="margin: auto; max-height: 700px; box-shadow: 6px 6px 8px #999;" height="80%"; scrolling="no" frameborder="no" src="https://www.youtube.com/embed/NvAsZObkAm0?start=241" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
 		<!-- <iframe width="100%" style="margin: auto; max-height: 700px; box-shadow: 6px 6px 8px #999;" height="80%"; scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/952298569&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe> -->
 		<!-- <iframe width="333" style="margin: auto; max-height: 700px; box-shadow: 6px 6px 8px #999;" height="80%"; scrolling="yes" frameborder="no" src="https://www.nhaccuatui.com/lh/auto/lTlOvn4cSoYq&amp;hide_related=true&amp;show_comments=false&amp;show_user=true&amp;show_reposts=false&amp;visual=true&amp;autoplay=1&loop=1&title=0&byline=0&portrait=0&muted=1" allow="autoplay" autoplay="true" muted></iframe> -->
@@ -41,8 +41,8 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
 	<script type="text/javascript" src="{{ asset('frontend/js/jquery-2.1.4.min.js') }} "></script>
-	<script type="text/javascript">		
-		var GITHUB_USER = '{{$git_user->git_user}}';
+	<script type="text/javascript">
+		var GITHUB_USER = '{{$git_user->git_user ?? null}}';
 		var link_get_file_name = '{{ route('get_file_name') }}';
 		var limit              = 8;
 		$(document).ready(function() {
